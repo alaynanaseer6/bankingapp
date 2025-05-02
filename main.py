@@ -9,12 +9,13 @@ while True:
     print("1. Check Balance")
     print("2. Deposit")
     print("3. Withdraw")
-    print("4. Exit")
+    print("4. Delete Account")
+    print("5. Exit")
 
-    choice = input("Enter your choice (1–4): ")
+    choice = input("Enter your choice (1–5): ")
 
     if choice == '1':
-         print("Your balance is:", account.get_balance())
+        print("Your balance is:", account.get_balance())
     elif choice == '2':
         amount = float(input("Enter deposit amount: "))
         account.deposit(amount)
@@ -22,6 +23,9 @@ while True:
         amount = float(input("Enter withdrawal amount: "))
         account.withdraw(amount)
     elif choice == '4':
+        account.delete_account()
+        break
+    elif choice == '5':
         print("Goodbye!")
         break
     else:

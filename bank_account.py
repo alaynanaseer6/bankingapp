@@ -72,3 +72,13 @@ class BankAccount:
         self.cursor.execute('SELECT balance FROM accounts WHERE user_id = ?', (self.user_id,))
         result = self.cursor.fetchone()
         return result[0] if result else 0.0
+    def delete_account(self):
+        confirmation = input("Are you sure you want to delete your account? This action cannot be undone. (yes/no): ")
+        if confirmation.lower() == "yes":
+            self.cursor.execute('DELETE FROM transactions WHERE user_id = ?', (self.user_id,))
+            self.cursor.execute('DELETE FROM accounts WHERE user_id = ?', (self.user_id,))
+            self.conn.commit()
+            print("Account and all associated data have been deleted.")
+        else:
+            print("Account deletion cancelled.")
+        
